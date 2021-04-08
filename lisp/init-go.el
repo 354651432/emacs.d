@@ -1,25 +1,13 @@
-(use-package company-go
-  :ensure t
-  :hook (go-mode . (lambda ()
-                     (set (make-local-variable 'company-backends) '((company-files company-go)))))
-  :custom
-  (company-tooltip-limimt 20)
-  (company-idle-delay 0.3)
-  (company-echo-delay 0)
-  (compile-command "go build && ./demo")
-  :bind ("C-c C-c" . recompile))
-
-
 (use-package go-mode
   :ensure t
   :mode "\\.go\\'"
-  :hook (before-save . gofmt-before-save)
+  :hook (go-mode . 'lsp-deferred)
   :custom
-  (gofmt-command "goimports")
-  (tab-width 4))
+  (compile-command "go build && ./demo")
+  (tab-width 4)
+  (company-idle-delay 0.3)
+  :bind ("C-c C-c" . 'recompile))
 
-(use-package lsp-mode
-  :ensure t
-  :hook (go-mode . 'lsp-deferred))
+(add-hook 'go-mode-hook 'lsp-deferred)
 
 (provide 'init-go)
