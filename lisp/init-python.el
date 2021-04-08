@@ -39,5 +39,9 @@
 (when (maybe-require-package 'reformatter)
   (reformatter-define black :program "black"))
 
+(use-package blacken
+  :ensure t
+  :hook (before-save . blacken-buffer))
+
 (provide 'init-python)
 ;;; init-python.el ends here

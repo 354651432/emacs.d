@@ -63,7 +63,7 @@
 (require 'init-grep)
 (require 'init-uniquify)
 (require 'init-ibuffer)
-(require 'init-flycheck)
+;; (require 'init-flycheck)
 
 (require 'init-recentf)
 (require 'init-selectrum)
@@ -113,6 +113,7 @@
 (require 'init-docker)
 (require 'init-terraform)
 (require 'init-nix)
+(require 'init-go)
 (maybe-require-package 'nginx-mode)
 
 (require 'init-paredit)
