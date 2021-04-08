@@ -33,7 +33,6 @@
   (use-local-map (if buffer-read-only dual-ro-map nil)))
 
 (global-set-key (kbd "C-x x") 'recentf-open-files)
-
 (global-hl-line-mode t)
 
 (provide 'init-local)
