@@ -23,6 +23,7 @@
                        ("e" . move-end-of-line)
                        ("f" . forward-char)
                        ("b" . backward-char)
+                       ("v" . scroll-up)
                        )))
     (suppress-keymap map)
     (dolist (it keybindings map)
