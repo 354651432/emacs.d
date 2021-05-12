@@ -1,10 +1,10 @@
-;;; init-python.el --- Python editing -*- lexical-binding: t -*-
-;;; Commentary:
-;;; Code:
+; ; ; init-python.el - -- Python editing - *- lexical-binding: t - *-
+;; ; Commentary:
+;; ; Code:
 
-;; I use nix + direnv instead of virtualenv/pyenv/pyvenv, and it is an
-;; approach which extends to other languages too. I recorded a
-;; screencast about this: https://www.youtube.com/watch?v=TbIHRHy7_JM
+; ; I use nix + direnv instead of virtualenv/pyenv/pyvenv, and it is an
+; ; approach which extends to other languages too. I recorded a
+; ; screencast about this: https: // www.youtube.com/watch?v = TbIHRHy7_JM
 
 
 (setq auto-mode-alist
@@ -16,7 +16,7 @@
 
 (require-package 'pip-requirements)
 
-(when (maybe-require-package 'anaconda-mode)
+(when(maybe-require-package 'anaconda-mode)
   (with-eval-after-load 'python
     ;; Anaconda doesn't work on remote servers without some work, so
     ;; by default we enable it only when working locally.
@@ -39,9 +39,14 @@
 (when (maybe-require-package 'reformatter)
   (reformatter-define black :program "black"))
 
+(setenv "PYTHONPATH" "/home/dual/.local/lib/python3.9/site-packages")
 (use-package blacken
   :ensure t
   :hook (before-save . blacken-buffer))
+
+;; (add-hook 'after-save-hook (lambda ()
+
+;;                              (shell-command (format "autopep8 -i %s" (buffer-file-name)))))
 
 (provide 'init-python)
 ;;; init-python.el ends here

@@ -35,4 +35,15 @@
 (global-set-key (kbd "C-x x") 'recentf-open-files)
 (global-hl-line-mode t)
 
+(use-package web-mode
+  :ensure t
+  :mode "\\.blade.php\\'")
+
+(use-package emmet-mode
+  :ensure t
+  :hook (web-mode css-mode scss-mode sgml-mode)
+  :config
+  (add-hook 'emmet-mode-hook (lambda ()
+                               (setq emmet-indent-after-insert t)))
+  )
 (provide 'init-local)
