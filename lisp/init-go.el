@@ -20,8 +20,7 @@
   :bind ("C-c C-c" . 'go-execute)
   :config
   (add-hook 'go-mode-hook 'lsp-deferred)
-  (add-hook 'before-save-hook   'gofmt-before-save)
-  )
+  (add-hook 'before-save-hook 'gofmt-before-save))
 
 (use-package company-go
   :ensure t
