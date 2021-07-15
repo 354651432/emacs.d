@@ -42,7 +42,8 @@
 (setenv "PYTHONPATH" "/home/dual/.local/lib/python3.9/site-packages")
 (use-package blacken
   :ensure t
-  :hook (before-save . blacken-buffer))
+  :config
+  (add-hook 'before-save-hook #'blacken-buffer nil t))
 
 ;; (add-hook 'after-save-hook (lambda ()
 

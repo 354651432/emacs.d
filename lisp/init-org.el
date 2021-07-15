@@ -380,6 +380,13 @@ typical word processor."
      (sql . t)
      (sqlite . t))))
 
+(add-hook 'org-mode-hook #'org-indent-mode)
+
+(use-package org-bullets
+  :load-path "/home/dual/.emacs.d/.local/straight/build-28.0.50/org-bullets"
+  :hook (org-mode . org-bullets-mode))
 
 (provide 'init-org)
+
+
 ;;; init-org.el ends here

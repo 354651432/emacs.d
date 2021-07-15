@@ -119,4 +119,15 @@
   :load-path "/home/dual/code/purcel/.emacs.d/site-lisp/http-mode"
   :mode "\\.http\\'")
 
+(setq server-name "purcel")
+(server-start)
+
+(use-package protobuf-mode
+  :load-path "/home/dual/code/purcel/.emacs.d/site-lisp"
+  :mode "\\.proto\\'")
+
+(setq dired-omit-files "^\\..*$")
+
+(global-display-line-numbers-mode t)
+
 (provide 'init-local)

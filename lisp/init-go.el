@@ -17,10 +17,17 @@
   (tab-width 4)
   (company-idle-delay 0.3)
   (gofmt-command "goimports")
-  :bind ("C-c C-c" . 'go-execute)
+  :bind (
+         :map go-mode-map
+         ("C-c C-c" . 'go-execute))
   :config
-  (add-hook 'go-mode-hook 'lsp-deferred)
-  (add-hook 'before-save-hook 'gofmt-before-save))
+  (add-hook 'go-mode-hook (lambda ()
+                            (add-hook 'go-mode-hook 'lsp-deferred)
+                            (add-hook 'before-save-hook #'gofmt-before-save nil 'go-mode-hook))))
+
+(with-eval-after-load 'go-mode
+  (add-hook 'go-mode-hook (lambda ()
+                            (add-hook 'before-save-hook #'gofmt-before-save nil t))))
 
 (use-package company-go
   :ensure t
